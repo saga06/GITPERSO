@@ -9,13 +9,13 @@
     switch ($page){                     /*transformation de cette variable en un title prédéfinie*/
 
 
-        case '/DATACORP/datacorp_login/interface.php': /*si on se retrouve sur la page .../interface.php, alors*/
+        case '/GIT/GITPERSO/interface.php': /*si on se retrouve sur la page .../interface.php, alors*/
     $title= 'Liste des candidats '; /*le titre se transforme en...*/
     $css= './css/i-e.css'; /*le CSS appliqué est le ...*/
 
     break;
 
-        case '/DATACORP/datacorp_login/creationcandidat.php':
+        case '/GIT/GITPERSO/creationcandidat.php':
      $title= 'Création d\'un nouveau candidat';
      $css='./css/i-e.css';
      $css1= './css/creationcandidat.css';
