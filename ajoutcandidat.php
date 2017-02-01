@@ -10,6 +10,58 @@ include_once 'connection.php';
 include_once 'user.php';
 ?>
 
+<?php
+ini_set('display_errors','on');
+error_reporting(E_ALL);
+
+$bdd = new PDO("mysql:host=localhost;dbname=Datacorp","root", "Ziron1515");
+
+if(isset($_POST['form-horizontal']))
+{
+    if(!empty($_POST['nom']) AND !empty($_POST['prenom'])
+        AND !empty($_POST['d_naissance']) AND !empty($_POST['sexe'])
+        AND !empty($_POST['ec']) AND !empty($_POST['rue'])
+        AND !empty($_POST['postal']) AND !empty($_POST['ville'])
+        AND !empty($_POST['poste']) AND !empty($_POST['li'])
+        AND !empty($_POST['telFixe']) AND !empty($_POST['tel'])
+        AND !empty($_POST['email']) AND !empty($_POST['lp'])
+        AND !empty($_POST['vehicule']))
+    {
+        $nom = htmlspecialchars($_POST['nom']);
+        $prenom = htmlspecialchars($_POST['prenom']);
+        $d_naissance = htmlspecialchars($_POST['d_naissance']);
+        $sexe = htmlspecialchars($_POST['sexe']);
+        $ec = htmlspecialchars($_POST['ec']);
+        $rue = htmlspecialchars($_POST['rue']);
+        $postal = htmlspecialchars($_POST['postal']);
+        $ville = htmlspecialchars($_POST['ville']);
+        $poste = htmlspecialchars($_POST['poste']);
+        $li = htmlspecialchars($_POST['li']);
+        $telFixe = htmlspecialchars($_POST['telFixe']);
+        $tel = htmlspecialchars($_POST['tel']);
+        $email = htmlspecialchars($_POST['email']);
+        $lp = htmlspecialchars($_POST['lp']);
+        $vehicule = htmlspecialchars($_POST['vehicule']);
+
+
+                    {
+                            $insert=$bdd->prepare("INSERT INTO users_infos(id, nom, prenom, d_naissance, sexe, ec, rue, postal, ville, poste, li, telFixe, tel, email, lp, vehicule, statut) 
+                            VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Candidat')");
+                            $insert->execute(array($nom, $prenom, $d_naissance, $sexe, $ec, $rue, $postal, $ville, $poste, $li, $telFixe, $tel, $email, $lp, $vehicule));
+                            $erreur = "Le candidat a bien été ajouté";
+
+
+                    }
+
+    }
+    else
+    {
+        $erreur = "Tous les champs doivent être complétés";
+    }
+}
+
+?>
+
 
 
 
@@ -21,11 +73,10 @@ include_once 'user.php';
 
                     <meta charset="utf-8">
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <meta name="viewport" content="width=device-width, initial-scale=1" property="">
                     <meta name="description" content="">
-                    <meta name="author" content="">
+                    <meta name="author" content="saga">
 
-                    <title>User profile form requirement</title>
                     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==" crossorigin="anonymous">
                     <!-- Bootstrap Core CSS -->
                     <!--     <link href="css/bootstrap.min.css" rel="stylesheet"> -->
@@ -33,17 +84,11 @@ include_once 'user.php';
 
                 <!-- Custom CSS -->
                 <style>
-                    body {
-                        padding-top: 70px;
-                        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-                    }
 
                     .othertop{margin-top:10px;}
+
                 </style>
 
-                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-                <!--[if lt IE 9]>
                 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
                 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
                 <![endif]-->
@@ -57,11 +102,8 @@ include_once 'user.php';
                 <div class="container">
                     <div class="row">
                         <div class="col-md-10 ">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" method="post">
                                 <fieldset>
-
-                                    <!-- Text input-->
-
 
 
 
@@ -73,7 +115,7 @@ include_once 'user.php';
                                                     <i class="fa fa-user">
                                                     </i>
                                                 </div>
-                                                <input id="Nom" name="Nom" type="text" placeholder="Nom" class="form-control input-md">
+                                                <input id="Nom" name="nom" type="text" placeholder="Nom" class="form-control input-md">
                                             </div>
 
 
@@ -117,7 +159,7 @@ include_once 'user.php';
                                                     <i class="fa fa-birthday-cake"></i>
 
                                                 </div>
-                                                <input id="dob" name="dob" type="text" placeholder="Né(e) le" class="form-control input-md">
+                                                <input id="d_naissance" name="d_naissance" type="text" placeholder="Né(e) le" class="form-control input-md">
                                             </div>
 
 
@@ -133,11 +175,11 @@ include_once 'user.php';
                                         <label class="col-md-4 control-label" for="sexe">Sexe</label>
                                         <div class="col-md-4">
                                             <label class="radio-inline" for="Gender-0">
-                                                <input type="radio" name="sexe" id="sexe" value="1" checked="checked">
+                                                <input type="radio" name="sexe" id="sexe" value="M" checked="checked">
                                                 M
                                             </label>
                                             <label class="radio-inline" for="Gender-1">
-                                                <input type="radio" name="sexe" id="Gender-1" value="2">
+                                                <input type="radio" name="sexe" id="Gender-1" value="F">
                                                 F
                                             </label>
                                         </div>
@@ -148,11 +190,11 @@ include_once 'user.php';
                                         <label class="col-md-4 control-label" for="radios">Etat civil:</label>
                                         <div class="col-md-4">
                                             <label class="radio-inline" for="radios-0">
-                                                <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+                                                <input type="radio" name="ec" id="radios-0" value="Marié(e)" checked="checked">
                                                 Marié(e)
                                             </label>
                                             <label class="radio-inline" for="radios-1">
-                                                <input type="radio" name="radios" id="radios-1" value="2">
+                                                <input type="radio" name="ec" id="radios-1" value="Célibataire">
                                                 Célibataire
                                             </label>
                                         </div>
@@ -164,12 +206,12 @@ include_once 'user.php';
                                     <div class="form-group">
                                         <label class="col-md-4 control-label col-xs-12" for="Permanent Address">Adresse</label>
                                         <div class="col-md-2  col-xs-4">
-                                            <input id="Permanent Address" name="Permanent Address" type="text" placeholder="Rue" class="form-control input-md ">
+                                            <input id="rue" name="rue" type="text" placeholder="Rue" class="form-control input-md ">
                                         </div>
 
                                         <div class="col-md-2 col-xs-4">
 
-                                            <input id="Permanent Address" name="Permanent Address" type="text" placeholder="Code Postal" class="form-control input-md ">
+                                            <input id="postal" name="postal" type="text" placeholder="Code Postal" class="form-control input-md ">
                                         </div>
 
 
@@ -178,7 +220,7 @@ include_once 'user.php';
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="Permanent Address"></label>
                                         <div class="col-md-2  col-xs-4">
-                                            <input id="Permanent Address" name="Permanent Address" type="text" placeholder="Commune" class="form-control input-md ">
+                                            <input id="ville" name="ville" type="text" placeholder="Commune" class="form-control input-md ">
 
                                         </div>
 
@@ -198,7 +240,7 @@ include_once 'user.php';
                                                     <i class="fa fa-briefcase"></i>
 
                                                 </div>
-                                                <input id="Primary Occupation" name="Primary Occupation" type="text" placeholder="Poste désiré" class="form-control input-md">
+                                                <input id="poste" name="poste" type="text" placeholder="Poste désiré" class="form-control input-md">
                                             </div>
 
 
@@ -216,7 +258,7 @@ include_once 'user.php';
                                                     <i class="fa fa-graduation-cap"></i>
 
                                                 </div>
-                                                <input id="Skills" name="Skills" type="text" placeholder="Language(s) informatique(s) connu(s)" class="form-control input-md">
+                                                <input id="li" name="li" type="text" placeholder="Language(s) informatique(s) connu(s)" class="form-control input-md">
                                             </div>
 
 
@@ -232,7 +274,7 @@ include_once 'user.php';
                                                     <i class="fa fa-phone"></i>
 
                                                 </div>
-                                                <input id="Phone number " name="Phone number " type="text" placeholder="Fixe " class="form-control input-md">
+                                                <input id="telFixe" name="telFixe" type="text" placeholder="Fixe " class="form-control input-md">
 
                                             </div>
                                             <div class="input-group othertop">
@@ -240,7 +282,7 @@ include_once 'user.php';
                                                     <i class="fa fa-mobile fa-1x" style="font-size: 20px;"></i>
 
                                                 </div>
-                                                <input id="Phone number " name="Secondary Phone number " type="text" placeholder="Portable " class="form-control input-md">
+                                                <input id="tel" name="tel" type="text" placeholder="Portable " class="form-control input-md">
 
                                             </div>
 
@@ -256,7 +298,7 @@ include_once 'user.php';
                                                     <i class="fa fa-envelope-o"></i>
 
                                                 </div>
-                                                <input id="Email" name="Email" type="text" placeholder="Email" class="form-control input-md">
+                                                <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">
 
                                             </div>
 
@@ -273,25 +315,25 @@ include_once 'user.php';
                                         <div class="col-md-4">
                                             <div class="checkbox">
                                                 <label for="Languages Known-0">
-                                                    <input type="checkbox" name="Languages Known" id="Languages Known-0" value="1">
+                                                    <input type="checkbox" name="lp" id="Languages Known-0" value="Français">
                                                     Français
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label for="Languages Known-1">
-                                                    <input type="checkbox" name="Languages Known" id="Languages Known-1" value="2">
+                                                    <input type="checkbox" name="lp" id="Languages Known-1" value="Anglais">
                                                     Anglais
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label for="Languages Known-2">
-                                                    <input type="checkbox" name="Languages Known" id="Languages Known-2" value="3">
+                                                    <input type="checkbox" name="lp" id="Languages Known-2" value="Espagnol">
                                                     Espagnol
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label for="Languages Known-3">
-                                                    <input type="checkbox" name="Languages Known" id="Languages Known-3" value="4">
+                                                    <input type="checkbox" name="lp" id="Languages Known-3" value="Italien">
                                                     Italien
                                                 </label>
                                             </div>
@@ -303,7 +345,7 @@ include_once 'user.php';
 
                                                 </label>
 
-                                                <input type="input" name="LanguagesKnown" id="Languages Known-4"  placeholder="Autres">
+                                                <input type="input" name="lp" id="Languages Known-4"  placeholder="Autres">
                                             </div>
 
                                         </div>
@@ -317,20 +359,20 @@ include_once 'user.php';
                                         <div class="col-md-4">
                                             <div class="checkbox">
                                                 <label for="Owns Vehicle-0">
-                                                    <input type="checkbox" name="Owns Vehicle" id="Owns Vehicle-1" value="0">
+                                                    <input type="checkbox" name="vehicule" id="Owns Vehicle-1" value="non">
                                                     Non
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label for="Owns Vehicle-1">
-                                                    <input type="checkbox" name="Owns Vehicle" id="Owns Vehicle-0" value="1">
+                                                    <input type="checkbox" name="vehicule" id="Owns Vehicle-0" value="Voiture">
                                                     Auto
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label for="Owns Vehicle-2">
-                                                    <input type="checkbox" name="Owns Vehicle" id="Owns Vehicle-1" value="2">
-                                                    Moto
+                                                    <input type="checkbox" name="vehicule" id="Owns Vehicle-1" value="2 roues">
+                                                    2 Roues
                                                 </label>
                                             </div>
                                         </div>
@@ -340,7 +382,7 @@ include_once 'user.php';
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="Overview (max 200 words)">Commentaires (200 mots max)</label>
                                         <div class="col-md-4">
-                                            <textarea class="form-control" rows="10"  id="Overview (max 200 words)" name="Overview (max 200 words)">Commentaires</textarea>
+                                            <textarea class="form-control" rows="10"  id="Overview (max 200 words)" name="com"></textarea>
                                         </div>
                                     </div>
 
@@ -348,7 +390,7 @@ include_once 'user.php';
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" ></label>
                                         <div class="col-md-4">
-                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-thumbs-up"></span> Créer</a>
+                                            <button><a href="#" name="form-horizontal" type="submit" class="btn btn-success">  <span class="glyphicon glyphicon-thumbs-up"></span>  Créer</a></button>
                                             <a href="#" class="btn btn-danger" value=""><span class="glyphicon glyphicon-remove-sign"></span> Effacer</a>
 
                                         </div>
@@ -356,11 +398,16 @@ include_once 'user.php';
 
                                 </fieldset>
                             </form>
-                        </div>
+                            <div id="error"><?php
+                                if(isset($erreur))
+                                {
+                                    echo $erreur;
+                                }
+                                ?>
+                            </div>
                         <div class="col-md-2 hidden-xs">
                             <img src="http://websamplenow.com/30/userprofile/images/avatar.jpg" class="img-responsive img-thumbnail ">
                         </div>
-
 
                     </div>
                 </div>
