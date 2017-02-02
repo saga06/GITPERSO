@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37e8ffe7-a314-4fad-a199-cbf64c595dbb" name="Default" comment="v1.1&#10;">
+    <list default="true" id="37e8ffe7-a314-4fad-a199-cbf64c595dbb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajoutcandidat.php" afterPath="$PROJECT_DIR$/ajoutcandidat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/creationcandidat.css" afterPath="$PROJECT_DIR$/css/creationcandidat.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,6 +14,14 @@
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
@@ -32,13 +39,24 @@
       <file leaf-file-name="ajoutcandidat.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ajoutcandidat.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="406" column="28" lean-forward="false" selection-start-line="406" selection-start-column="28" selection-end-line="406" selection-end-column="28" />
+            <state relative-caret-position="231">
+              <caret line="409" column="48" lean-forward="false" selection-start-line="409" selection-start-column="42" selection-end-line="409" selection-end-column="48" />
               <folding>
-                <element signature="e#6#83#0#PHP" expanded="true" />
-                <marker date="1485987794793" expanded="true" signature="1656:1895" ph="INSERT INTO Users... " />
-                <marker date="1485987794793" expanded="true" signature="3678:3901" ph="..." />
+                <marker date="1486029158088" expanded="true" signature="1733:1813" ph="INSERT INTO users_infos... " />
+                <marker date="1486029158088" expanded="true" signature="1767:1813" ph="INSERT INTO Users... " />
+                <marker date="1486029158088" expanded="true" signature="3510:3733" ph="..." />
+                <marker date="1486029158088" expanded="false" signature="13251:13267" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Datacorp.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Datacorp.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1026">
+              <caret line="57" column="175" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -48,6 +66,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>auto</find>
+      <find>erreur</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -66,6 +85,12 @@
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>false</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>false</other-services-enabled>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
@@ -80,6 +105,28 @@
     <option name="y" value="24" />
     <option name="width" value="1855" />
     <option name="height" value="1056" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>SQL</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PHP</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -96,8 +143,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -144,12 +191,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="JavaScript Debug.creationcandidat.php">
+  <component name="RunManager" selected="JavaScript Debug.ajoutcandidat.php">
     <configuration default="false" name="creationcandidat.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GITPERSO/creationcandidat.php">
+      <method />
+    </configuration>
+    <configuration default="false" name="ajoutcandidat.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GITPERSO/ajoutcandidat.php">
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
@@ -208,12 +258,14 @@
       <recursive>false</recursive>
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.creationcandidat.php" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.ajoutcandidat.php" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.creationcandidat.php" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.ajoutcandidat.php" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.creationcandidat.php" />
       </list>
     </recent_temporary>
   </component>
@@ -229,7 +281,8 @@
       <updated>1485882858892</updated>
       <workItem from="1485882860128" duration="5165000" />
       <workItem from="1485940598744" duration="17702000" />
-      <workItem from="1485987363253" duration="432000" />
+      <workItem from="1485987363253" duration="2158000" />
+      <workItem from="1486025087600" duration="3715000" />
     </task>
     <task id="LOCAL-00001" summary="v1.1&#10;">
       <created>1485886690473</created>
@@ -245,11 +298,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485946893694</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="v1.1&#10;">
+      <created>1485987810433</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1485987810433</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23299000" />
+    <option name="totallyTimeSpent" value="28740000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
@@ -312,6 +372,35 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/creationcandidat.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="2" lean-forward="false" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajoutcandidat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="57" column="8" lean-forward="true" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
+          <folding>
+            <marker date="1486029158088" expanded="true" signature="1733:1813" ph="INSERT INTO users_infos... " />
+            <marker date="1486029158088" expanded="true" signature="1767:1813" ph="INSERT INTO Users... " />
+            <marker date="1486029158088" expanded="true" signature="3510:3733" ph="..." />
+            <marker date="1486029158088" expanded="false" signature="13251:13267" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Datacorp.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creationcandidat.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -323,9 +412,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6#83#0#PHP" expanded="true" />
-            <marker date="1485987794793" expanded="true" signature="1656:1895" ph="INSERT INTO Users... " />
-            <marker date="1485987794793" expanded="true" signature="3678:3901" ph="..." />
+            <marker date="1486029158088" expanded="true" signature="1733:1813" ph="INSERT INTO users_infos... " />
+            <marker date="1486029158088" expanded="true" signature="1767:1813" ph="INSERT INTO Users... " />
+            <marker date="1486029158088" expanded="true" signature="3510:3733" ph="..." />
+            <marker date="1486029158088" expanded="false" signature="13251:13267" ph="..." />
           </folding>
         </state>
       </provider>
@@ -384,14 +474,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Datacorp.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="57" column="175" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ajoutcandidat.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="406" column="28" lean-forward="false" selection-start-line="406" selection-start-column="28" selection-end-line="406" selection-end-column="28" />
+        <state relative-caret-position="231">
+          <caret line="409" column="48" lean-forward="false" selection-start-line="409" selection-start-column="42" selection-end-line="409" selection-end-column="48" />
           <folding>
-            <element signature="e#6#83#0#PHP" expanded="true" />
-            <marker date="1485987794793" expanded="true" signature="1656:1895" ph="INSERT INTO Users... " />
-            <marker date="1485987794793" expanded="true" signature="3678:3901" ph="..." />
+            <marker date="1486029158088" expanded="true" signature="1733:1813" ph="INSERT INTO users_infos... " />
+            <marker date="1486029158088" expanded="true" signature="1767:1813" ph="INSERT INTO Users... " />
+            <marker date="1486029158088" expanded="true" signature="3510:3733" ph="..." />
+            <marker date="1486029158088" expanded="false" signature="13251:13267" ph="..." />
           </folding>
         </state>
       </provider>

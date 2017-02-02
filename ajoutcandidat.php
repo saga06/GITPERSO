@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 /**
  * Created by PhpStorm.
  * User: sam
@@ -26,6 +27,7 @@ if(isset($_POST['form-horizontal']))
         AND !empty($_POST['telFixe']) AND !empty($_POST['tel'])
         AND !empty($_POST['email']) AND !empty($_POST['lp'])
         AND !empty($_POST['vehicule']))
+        echo 'etape1';
     {
         $nom = htmlspecialchars($_POST['nom']);
         $prenom = htmlspecialchars($_POST['prenom']);
@@ -41,23 +43,25 @@ if(isset($_POST['form-horizontal']))
         $tel = htmlspecialchars($_POST['tel']);
         $email = htmlspecialchars($_POST['email']);
         $lp = htmlspecialchars($_POST['lp']);
-        $vehicule = htmlspecialchars($_POST['vehicule']);
+        /*$vehicule = htmlspecialchars($_POST['vehicule']);*/
+        echo 'etape2';
 
 
                     {
-                            $insert=$bdd->prepare("INSERT INTO users_infos(id, nom, prenom, d_naissance, sexe, ec, rue, postal, ville, poste, li, telFixe, tel, email, lp, vehicule, statut) 
-                            VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Candidat')");
-                            $insert->execute(array($nom, $prenom, $d_naissance, $sexe, $ec, $rue, $postal, $ville, $poste, $li, $telFixe, $tel, $email, $lp, $vehicule));
+                            $insert=$bdd->prepare("INSERT INTO users_infos(id, nom) 
+                            VALUES(null, ?)); 
+                            $insert->execute(array($nom)); 
                             $erreur = "Le candidat a bien été ajouté";
+                            echo 'etape3';
 
 
                     }
 
     }
-    else
-    {
-        $erreur = "Tous les champs doivent être complétés";
-    }
+
+}else
+{
+    $erreur = "Tous les champs doivent être complétés";
 }
 
 ?>
@@ -390,13 +394,17 @@ if(isset($_POST['form-horizontal']))
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" ></label>
                                         <div class="col-md-4">
-                                            <button><a href="#" name="form-horizontal" type="submit" class="btn btn-success">  <span class="glyphicon glyphicon-thumbs-up"></span>  Créer</a></button>
+                                            <input name="form-horizontal" type="submit" class="btn btn-success" value="créer">  <span class="glyphicon glyphicon-thumbs-up"></span>
                                             <a href="#" class="btn btn-danger" value=""><span class="glyphicon glyphicon-remove-sign"></span> Effacer</a>
 
                                         </div>
                                     </div>
+                                    <div class="col-md-2 hidden-xs">
+                                        <img src="http://websamplenow.com/30/userprofile/images/avatar.jpg" class="img-responsive img-thumbnail ">
+                                    </div>
 
                                 </fieldset>
+
                             </form>
                             <div id="error"><?php
                                 if(isset($erreur))
@@ -405,9 +413,7 @@ if(isset($_POST['form-horizontal']))
                                 }
                                 ?>
                             </div>
-                        <div class="col-md-2 hidden-xs">
-                            <img src="http://websamplenow.com/30/userprofile/images/avatar.jpg" class="img-responsive img-thumbnail ">
-                        </div>
+
 
                     </div>
                 </div>
@@ -421,4 +427,3 @@ if(isset($_POST['form-horizontal']))
             </div>
         </div>
     </div>
-</form>
