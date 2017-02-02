@@ -7,27 +7,25 @@ declare(strict_types = 1);
  * Time: 14:44
  */
 
-include_once 'connection.php';
-include_once 'user.php';
 ?>
 
 <?php
 ini_set('display_errors','on');
 error_reporting(E_ALL);
 
-$bdd = new PDO("mysql:host=localhost;dbname=Datacorp","root", "Ziron1515");
+$bdd = new PDO('mysql:host=localhost;dbname=Datacorp','root', 'Ziron1515' , array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));/*affiche des codes d'erreurs liés à connexion BDD*/
+
 
 if(isset($_POST['form-horizontal']))
 {
-    if(!empty($_POST['nom']) AND !empty($_POST['prenom'])
+
+    if(     !empty($_POST['nom'])              AND !empty($_POST['prenom'])
         AND !empty($_POST['d_naissance']) AND !empty($_POST['sexe'])
-        AND !empty($_POST['ec']) AND !empty($_POST['rue'])
-        AND !empty($_POST['postal']) AND !empty($_POST['ville'])
-        AND !empty($_POST['poste']) AND !empty($_POST['li'])
-        AND !empty($_POST['telFixe']) AND !empty($_POST['tel'])
-        AND !empty($_POST['email']) AND !empty($_POST['lp'])
-        AND !empty($_POST['vehicule']))
-        echo 'etape1';
+        AND !empty($_POST['ec'])          AND !empty($_POST['rue'])
+        AND !empty($_POST['postal'])      AND !empty($_POST['ville'])
+        AND !empty($_POST['poste'])       AND !empty($_POST['li'])
+        AND !empty($_POST['telFixe'])     AND !empty($_POST['tel'])
+        AND !empty($_POST['email'])       AND !empty($_POST['lp']))
     {
         $nom = htmlspecialchars($_POST['nom']);
         $prenom = htmlspecialchars($_POST['prenom']);
@@ -43,26 +41,47 @@ if(isset($_POST['form-horizontal']))
         $tel = htmlspecialchars($_POST['tel']);
         $email = htmlspecialchars($_POST['email']);
         $lp = htmlspecialchars($_POST['lp']);
-        /*$vehicule = htmlspecialchars($_POST['vehicule']);*/
+        $Candidat = "Candidat";
+
         echo 'etape2';
 
 
-                    {
-                            $insert=$bdd->prepare("INSERT INTO users_infos(id, nom) 
-                            VALUES(null, ?)); 
-                            $insert->execute(array($nom)); 
+
+                            $insert=$bdd->prepare('INSERT INTO users_infos (`ID`, `nom`, `prenom`, `sexe`, `d_naissance`, `d_inscription`, `email`, `tel`, `rue`, `postal`, `ville`, `entreprise`, `recruteur`, `password`, `statut`, `ec`, `poste`, `li`, `lp`, `telFixe`, vehicule, com) 
+                            VALUES(null, :nom, :prenom, :sexe, :d_naissance, NOW(), :email, :tel, :rue, :postal, :ville, :entreprise, :recruteur, :password, :Candidat, :ec, :poste, :li, :lp, :telFixe, :vehicule, :com)');
+                            $insert->bindParam(':nom' , $nom);
+                            $insert->bindParam(':prenom' , $prenom);
+                            $insert->bindParam(':sexe' , $sexe);
+                            $insert->bindParam(':d_naissance' , $d_naissance);
+                            $insert->bindParam(':email' , $email);
+                            $insert->bindParam(':tel' , $tel);
+                            $insert->bindParam(':rue' , $rue);
+                            $insert->bindParam(':postal' , $postal);
+                            $insert->bindParam(':ville' , $ville);
+                            $insert->bindParam(':entreprise' , $entreprise);
+                            $insert->bindParam(':recruteur' , $recruteur);
+                            $insert->bindParam(':password' , $password);
+                            $insert->bindParam(':Candidat' , $Candidat);
+                            $insert->bindParam(':ec' , $ec);
+                            $insert->bindParam(':poste' , $poste);
+                            $insert->bindParam(':li' , $li);
+                            $insert->bindParam(':lp' , $lp);
+                            $insert->bindParam(':telFixe' , $telFixe);
+                            $insert->bindParam(':vehicule' , $vehicule);
+                            $insert->bindParam(':com' , $com);
+                            $insert->execute();
                             $erreur = "Le candidat a bien été ajouté";
-                            echo 'etape3';
-
-
-                    }
-
+                            echo 'etape 3';
+    }
+    else
+    {
+        $erreur = "Tous les champs doivent être complétés";
     }
 
-}else
-{
-    $erreur = "Tous les champs doivent être complétés";
 }
+
+
+
 
 ?>
 
@@ -354,34 +373,30 @@ if(isset($_POST['form-horizontal']))
 
                                         </div>
                                     </div>
-
-
-
                                     <!-- Multiple Radios -->
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="Owns Vehicle">Véhiculé(e)</label>
+                                        <label class="col-md-4 control-label" for="Owns Vehicle">Véhiculé ?</label>
                                         <div class="col-md-4">
                                             <div class="checkbox">
-                                                <label for="Owns Vehicle-0">
-                                                    <input type="checkbox" name="vehicule" id="Owns Vehicle-1" value="non">
+                                                <label for="Owns Vehicle-2">
+                                                    <input type="checkbox" name="Owns Vehicle" id="Owns Vehicle-2" value="Non">
                                                     Non
                                                 </label>
                                             </div>
                                             <div class="checkbox">
-                                                <label for="Owns Vehicle-1">
-                                                    <input type="checkbox" name="vehicule" id="Owns Vehicle-0" value="Voiture">
-                                                    Auto
+                                                <label for="Owns Vehicle-0">
+                                                    <input type="checkbox" name="Owns Vehicle" id="Owns Vehicle-0" value="Voiture">
+                                                    Voiture
                                                 </label>
                                             </div>
                                             <div class="checkbox">
-                                                <label for="Owns Vehicle-2">
-                                                    <input type="checkbox" name="vehicule" id="Owns Vehicle-1" value="2 roues">
-                                                    2 Roues
+                                                <label for="Owns Vehicle-1">
+                                                    <input type="checkbox" name="Owns Vehicle" id="Owns Vehicle-1" value="2 roues">
+                                                    2 roues
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
-
                                     <!-- Textarea -->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="Overview (max 200 words)">Commentaires (200 mots max)</label>
@@ -394,7 +409,7 @@ if(isset($_POST['form-horizontal']))
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" ></label>
                                         <div class="col-md-4">
-                                            <input name="form-horizontal" type="submit" class="btn btn-success" value="créer">  <span class="glyphicon glyphicon-thumbs-up"></span>
+                                            <input name="form-horizontal" type="submit" class="btn btn-success"> <span class="glyphicon glyphicon-thumbs-up"></span>
                                             <a href="#" class="btn btn-danger" value=""><span class="glyphicon glyphicon-remove-sign"></span> Effacer</a>
 
                                         </div>
